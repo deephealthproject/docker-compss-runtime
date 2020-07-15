@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  compss-worker:
+    image: "bscppc/compss-deephealth-demo"
+    command: ["-c", "/usr/sbin/sshd -D"]
+       
+  compss-master:
+    image: "bscppc/compss-deephealth-demo"
+    stdin_open: true
+    tty: true
+    depends_on:
+      - compss-worker
