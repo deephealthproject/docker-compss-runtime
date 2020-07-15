@@ -2,15 +2,15 @@
 
 This section presents how to run a preliminary version of an EDDL training operation in two different computing environments, demonstrating the heterogeneous capabilities of COMPSs. The demonstrators presented here have been executed on a Linux Ubuntu 18.04.
 
-## 4.1.1 COMPSs in a Linux-based Infrastructure
+## COMPSs in a Linux-based Infrastructure
 
 1. Install Docker and docker-compose in your own computing resource. The one provided in this deliverable has been tested with Docker version 19.03.7, build 7141c199a2, Ubuntu 18.04.
 2. Pull the demonstrator image by running: `docker pull bscppc/compss-deephealth-demo`
-3. Download the docker-compose.yml file provided and store it in a separate directory named deephealth: `git clone https://github.com/deephealthproject/docker-compss-runtime`
+3. Download the docker-compose.yml file provided and store it in a separate directory named **deephealth**: `git clone https://github.com/deephealthproject/docker-compss-runtime`
 4. Run: `docker-compose up -d --scale compss-worker=4`. This will deploy five containers, four of which will take on the role of COMPSs workers, while the remaining will be used as the COMPSs master.
 5. Access the COMPSs master container by running: `docker exec -it deephealth_compss-master_1 bash`. This will open a bash session inside the container, in the directory with the EDDL application and the needed COMPSs configuration options.
 6. Enter the pyeddl directory: `cd pyeddl/third_party/compss_runtime`
-7. Launch COMPSs by running the following command: `runcompss --lang=python --python_interpreter=python3 –project=linux-based/project.xml --resources=linux-based/resources.xml eddl_train_batch_compss.py`
+7. Launch COMPSs by running the following command: `runcompss --lang=python --python_interpreter=python3 --project=linux-based/project.xml --resources=linux-based/resources.xml eddl_train_batch_compss.py`
 8. Once the application finishes correctly, the COMPSs master container can be exited. The containers can be destroyed by running, in the same directory: `docker-compose down -v`
 
 ## COMPSS in a cloud
